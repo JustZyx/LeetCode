@@ -13,14 +13,14 @@ using namespace std;
 
 class Solution {
 public:
-    int lengthOfLongestSubstring(string s) { 
+    int lengthOfLongestSubstring(string s) {
         int slow = 0;
         int maxLen = 0;
-
+        
         unordered_map<char, int> um;
         for (int i = 0; i < s.size(); i++) {
             if (um.find(s[i]) != um.end()) {
-                slow = max(slow, um[s[i]] + 1);
+                slow = max(slow, um[s[i]] + 1); //只能前进不能后退
             }
             um[s[i]] = i;
             maxLen = max(maxLen, i - slow + 1);
